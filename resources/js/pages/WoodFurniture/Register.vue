@@ -1,57 +1,100 @@
 <script setup>
-import WoodFurnitureLayout from '@/layouts/WoodFurnitureLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 const form = useForm({
-    first_name: '',
-    last_name: '',
-    middle_name: '',
     login: '',
     email: '',
     password: '',
     password_confirmation: '',
     agree: false,
 });
+const submit = () => {
+    form.post('/register', {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
+};
 </script>
 
 <template>
     <Head title="Register" />
 
-    <WoodFurnitureLayout>
-        <div class="registration mt120">
-            <div class="container">
-                <form @submit.prevent>
-                    <p class="bbtext">Register</p>
-                    <div class="form">
-                        <input type="text" class="form-input" placeholder="First Name*" v-model="form.first_name">
-                    </div>
-                    <div class="form">
-                        <input type="text" class="form-input" placeholder="Last Name*" v-model="form.last_name">
-                    </div>
-                    <div class="form">
-                        <input type="text" class="form-input" placeholder="Middle Name" v-model="form.middle_name">
-                    </div>
-                    <div class="form">
-                        <input type="text" class="form-input" placeholder="Login*" v-model="form.login">
-                    </div>
-                    <div class="form">
-                        <input type="text" class="form-input" placeholder="Email*" v-model="form.email">
-                    </div>
-                    <div class="form">
-                        <input type="password" class="form-input" placeholder="Password*" v-model="form.password">
-                    </div>
-                    <div class="form">
-                        <input type="password" class="form-input" placeholder="Confirm Password*" v-model="form.password_confirmation">
-                    </div>
-                    <div class="form">
-                        <div class="check">
-                            <input type="checkbox" v-model="form.agree">
-                            <label>I agree to registration rules</label>
+    <MainLayout>
+        <div class="flex items-center justify-center min-h-[80vh] py-12 bg-white">
+
+            <div class="w-full max-w-lg px-6">
+
+                <form @submit.prevent="submit">
+                    <h1 class="text-3xl font-extrabold text-slate-800 text-center mb-8 tracking-tight">
+                        Create Account
+                    </h1>
+
+                    <div class="space-y-4">
+
+                        <div>
+                            <input
+                                type="text"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Login*"
+                                v-model="form.login"
+                            >
                         </div>
+
+                        <div>
+                            <input
+                                type="email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Email Address*"
+                                v-model="form.email"
+                            >
+                        </div>
+
+                        <div>
+                            <input
+                                type="password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Password*"
+                                v-model="form.password"
+                            >
+                        </div>
+
+                        <div>
+                            <input
+                                type="password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Confirm Password*"
+                                v-model="form.password_confirmation"
+                            >
+                        </div>
+
                     </div>
-                    <button class="orbtn">Register</button>
+
+                    <div class="flex items-center mt-2">
+                        <input
+                            id="terms"
+                            type="checkbox"
+                            class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+                            v-model="form.agree"
+                        >
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            Remember me
+                        </label>
+                    </div>
+
+                        <button
+                            class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded shadow transition duration-200 mt-2"
+                        >
+                            Register
+                        </button>
+
+                    <div class="mt-6 text-center text-sm text-gray-600">
+                        Already have an account?
+                        <Link href="/login" class="font-bold text-orange-500 hover:text-orange-600 transition">
+                            Login here
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>
-    </WoodFurnitureLayout>
+    </MainLayout>
 </template>
