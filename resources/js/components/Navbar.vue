@@ -46,7 +46,7 @@ const showMobileMenu = ref(false);
 
         <div class="bg-slate-800 py-3 overflow-x-auto">
             <div class="container mx-auto px-4">
-                <div class="flex space-x-8 text-gray-300 font-medium text-sm whitespace-nowrap">
+                <div class="flex md:justify-center space-x-8 text-gray-300 font-medium text-sm whitespace-nowrap">
                     <Link href="/catalog" class="hover:text-white transition">All Products</Link>
                     <Link href="/catalog?c=tables" class="hover:text-white transition">Tables</Link>
                     <Link href="/catalog?c=chairs" class="hover:text-white transition">Chairs</Link>
