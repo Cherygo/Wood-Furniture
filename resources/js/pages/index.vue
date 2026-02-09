@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ProductCard from '@/components/ProductCard.vue';
-import MainLayout from '@/layouts/MainLayout.vue';
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import ProductCard from '@/components/ProductCard.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 defineProps({
     furniture: Object,

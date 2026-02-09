@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MainLayout from '@/layouts/MainLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 const form = useForm({
     login: '',
