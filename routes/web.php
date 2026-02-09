@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -9,7 +12,7 @@ use Laravel\Fortify\Features;
 //         'canRegister' => Features::enabled(Features::registration()),
 //     ]);
 // })->name('home');
-
+//
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -17,5 +20,24 @@ Route::get('dashboard', function () {
 Route::get('/', function () {
     return Inertia::render('index', []);
 });
+
+// AUTH
+Route::get('/register', function () {
+    return Inertia::render('WoodFurniture/Register', []);
+})->middleware('guest')
+    ->name('register');
+Route::post('/register', RegisterController::class)
+    ->middleware('guest');
+
+Route::get('/login', function () {
+ return Inertia::render('WoodFurniture/Login', []);
+})->middleware('guest')
+    ->name('login');
+Route::post('/login', LoginController::class)
+    ->middleware('guest');
+
+Route::post('/logout', LogoutController::class)
+    ->middleware('auth')
+    ->name('logout');
 
 require __DIR__.'/settings.php';
