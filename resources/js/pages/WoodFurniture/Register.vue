@@ -39,6 +39,9 @@ const submit = () => {
                                 v-model="form.login"
                             >
                         </div>
+                        <div v-if="form.errors.login" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.login }}
+                        </div>
 
                         <div>
                             <input
@@ -48,6 +51,9 @@ const submit = () => {
                                 v-model="form.email"
                             >
                         </div>
+                        <div v-if="form.errors.email" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.email }}
+                        </div>
 
                         <div>
                             <input
@@ -56,6 +62,9 @@ const submit = () => {
                                 placeholder="Password*"
                                 v-model="form.password"
                             >
+                        </div>
+                        <div v-if="form.errors.password" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.password }}
                         </div>
 
                         <div>

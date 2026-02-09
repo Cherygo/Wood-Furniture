@@ -3,9 +3,13 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
 
 const form = useForm({
-    login: '',
+    email: '',
     password: '',
+    agree: false,
 });
+const submit = () => {
+    form.post('/login')
+};
 </script>
 
 <template>
@@ -30,6 +34,9 @@ const form = useForm({
                                 v-model="form.email"
                             >
                         </div>
+                        <div v-if="form.errors.email" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.email }}
+                        </div>
 
                         <div>
                             <input
@@ -38,6 +45,9 @@ const form = useForm({
                                 placeholder="Password"
                                 v-model="form.password"
                             >
+                        </div>
+                        <div v-if="form.errors.password" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.password }}
                         </div>
 
                         <button
