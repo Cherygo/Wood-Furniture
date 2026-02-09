@@ -3,24 +3,33 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <footer class="bg-slate-800 text-slate-300 py-10 mt-auto">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-
+    <footer class="mt-auto bg-slate-800 py-10 text-slate-300">
+        <div
+            class="container mx-auto flex flex-col items-center justify-between gap-6 px-4 md:flex-row"
+        >
             <div class="text-center md:text-left">
-                <Link href="/" class="block text-xl font-bold text-white mb-2">
+                <Link href="/" class="mb-2 block text-xl font-bold text-white">
                     WoodFurniture Project
                 </Link>
-                <nav class="flex flex-wrap justify-center md:justify-start gap-6 text-sm">
-                    <Link href="/catalog" class="hover:text-white transition">Catalog</Link>
-                    <Link href="/" class="hover:text-white transition">About Us</Link>
-                    <Link href="/" class="hover:text-white transition">Where to find us</Link>
+                <nav
+                    class="flex flex-wrap justify-center gap-6 text-sm md:justify-start"
+                >
+                    <Link href="/catalog" class="transition hover:text-white"
+                        >Catalog</Link
+                    >
+                    <Link href="/" class="transition hover:text-white"
+                        >About Us</Link
+                    >
+                    <Link href="/" class="transition hover:text-white"
+                        >Where to find us</Link
+                    >
                 </nav>
             </div>
 
             <div class="text-sm">
-                Created by: <span class="font-bold text-orange-500">Cherygo</span>
+                Created by:
+                <span class="font-bold text-orange-500">Cherygo</span>
             </div>
-
         </div>
     </footer>
 </template>

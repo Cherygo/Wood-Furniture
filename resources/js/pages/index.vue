@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
 import ProductCard from '@/components/ProductCard.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
+import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 defineProps({
-    featuredProducts: Array
+    furniture: Object,
 });
 
-// Scroll Logic
 const scrollContainer = ref(null);
 
 const scrollRight = () => {
@@ -20,37 +19,39 @@ const scrollRight = () => {
 
 <template>
     <MainLayout>
-
-        <section class="relative h-[500px] md:h-[600px] flex items-center">
+        <section class="relative flex h-[500px] items-center md:h-[600px]">
             <div class="absolute inset-0 z-0">
                 <img
                     src="../../../public/assets/imgs/banner1.jpg"
                     alt="Hero"
-                    class="w-full h-full object-cover"
-                >
+                    class="h-full w-full object-cover"
+                />
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
 
-            <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight max-w-xl mx-auto md:mx-0">
+            <div
+                class="relative z-10 container mx-auto px-4 text-center md:text-left"
+            >
+                <h2
+                    class="mx-auto mb-6 max-w-xl text-4xl leading-tight font-extrabold text-white md:mx-0 md:text-6xl"
+                >
                     Furniture for every home!
                 </h2>
                 <Link
                     href="/"
-                    class="inline-block px-8 py-3 bg-orange-500 text-white font-bold rounded hover:bg-orange-600 transition transform hover:scale-105"
+                    class="inline-block transform rounded bg-orange-500 px-8 py-3 font-bold text-white transition hover:scale-105 hover:bg-orange-600"
                 >
                     To Catalog
                 </Link>
             </div>
         </section>
 
-        <section class="py-16 container mx-auto px-4">
-
-            <div class="flex justify-between items-center mb-8">
+        <section class="container mx-auto px-4 py-16">
+            <div class="mb-8 flex items-center justify-between">
                 <h3 class="text-3xl font-bold text-slate-800">Popular Items</h3>
                 <button
                     @click="scrollRight"
-                    class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center hover:bg-slate-700 transition"
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-white transition hover:bg-slate-700"
                 >
                     →
                 </button>
@@ -58,31 +59,34 @@ const scrollRight = () => {
 
             <div
                 ref="scrollContainer"
-                class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
-                style="scrollbar-width: none; -ms-overflow-style: none;"
+                class="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6"
+                style="scrollbar-width: none; -ms-overflow-style: none"
             >
                 <ProductCard
-                    v-for="product in featuredProducts"
-                    :key="product.id"
-                    :product="product"
+                    v-for="item in furniture"
+                    :key="item.id"
+                    :product="item"
                 />
 
                 <Link
                     href="/"
-                    class="snap-start shrink-0 w-72 rounded-lg bg-slate-800 flex flex-col items-center justify-center text-white hover:bg-slate-700 transition group cursor-pointer"
+                    class="group flex w-72 shrink-0 cursor-pointer snap-start flex-col items-center justify-center rounded-lg bg-slate-800 text-white transition hover:bg-slate-700"
                 >
-                    <span class="text-xl font-bold mb-2">See all in Catalog</span>
-                    <span class="text-3xl group-hover:translate-x-2 transition-transform">→</span>
+                    <span class="mb-2 text-xl font-bold"
+                        >See all in Catalog</span
+                    >
+                    <span
+                        class="text-3xl transition-transform group-hover:translate-x-2"
+                        >→</span
+                    >
                 </Link>
             </div>
-
         </section>
-
     </MainLayout>
 </template>
 
 <style>
-/* Utility to hide scrollbar in Webkit (Chrome/Safari) */
+/* hide scrollbar in Webkit (Chrome/Safari) */
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }

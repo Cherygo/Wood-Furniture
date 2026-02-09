@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
 import InputError from '@/components/InputError.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,8 @@ import { Spinner } from '@/components/ui/spinner';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { register } from '@/routes';
 import { request } from '@/routes/password';
-import { store } from '@/routes/login';
+import { Form, Head } from '@inertiajs/vue3';
+// import { store } from '@/routes/login';
 
 defineProps<{
     status?: string;

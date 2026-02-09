@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar.vue';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col font-sans bg-gray-50">
+    <div class="flex min-h-screen flex-col bg-gray-50 font-sans">
         <Navbar />
 
         <main class="flex-1">

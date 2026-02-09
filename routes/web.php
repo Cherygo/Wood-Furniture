@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Furniture;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -18,7 +19,9 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
-    return Inertia::render('index', []);
+    return Inertia::render('index', [
+        'furniture' =>Furniture::take(7)
+    ]);
 });
 
 // AUTH

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Head, Link, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
     login: '',
@@ -20,85 +20,100 @@ const submit = () => {
     <Head title="Register" />
 
     <MainLayout>
-        <div class="flex items-center justify-center min-h-[80vh] py-12 bg-white">
-
+        <div
+            class="flex min-h-[80vh] items-center justify-center bg-white py-12"
+        >
             <div class="w-full max-w-lg px-6">
-
                 <form @submit.prevent="submit">
-                    <h1 class="text-3xl font-extrabold text-slate-800 text-center mb-8 tracking-tight">
+                    <h1
+                        class="mb-8 text-center text-3xl font-extrabold tracking-tight text-slate-800"
+                    >
                         Create Account
                     </h1>
 
                     <div class="space-y-4">
-
                         <div>
                             <input
                                 type="text"
-                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                class="w-full rounded border border-gray-300 px-4 py-3 text-gray-700 transition focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 placeholder="Login*"
                                 v-model="form.login"
-                            >
+                            />
                         </div>
-                        <div v-if="form.errors.login" class="text-red-500 text-sm mt-1">
+                        <div
+                            v-if="form.errors.login"
+                            class="mt-1 text-sm text-red-500"
+                        >
                             {{ form.errors.login }}
                         </div>
 
                         <div>
                             <input
                                 type="email"
-                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                class="w-full rounded border border-gray-300 px-4 py-3 text-gray-700 transition focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 placeholder="Email Address*"
                                 v-model="form.email"
-                            >
+                            />
                         </div>
-                        <div v-if="form.errors.email" class="text-red-500 text-sm mt-1">
+                        <div
+                            v-if="form.errors.email"
+                            class="mt-1 text-sm text-red-500"
+                        >
                             {{ form.errors.email }}
                         </div>
 
                         <div>
                             <input
                                 type="password"
-                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                class="w-full rounded border border-gray-300 px-4 py-3 text-gray-700 transition focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 placeholder="Password*"
                                 v-model="form.password"
-                            >
+                            />
                         </div>
-                        <div v-if="form.errors.password" class="text-red-500 text-sm mt-1">
+                        <div
+                            v-if="form.errors.password"
+                            class="mt-1 text-sm text-red-500"
+                        >
                             {{ form.errors.password }}
                         </div>
 
                         <div>
                             <input
                                 type="password"
-                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                class="w-full rounded border border-gray-300 px-4 py-3 text-gray-700 transition focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 placeholder="Confirm Password*"
                                 v-model="form.password_confirmation"
-                            >
+                            />
                         </div>
-
                     </div>
 
-                    <div class="flex items-center mt-2">
+                    <div class="mt-2 flex items-center">
                         <input
                             id="terms"
                             type="checkbox"
-                            class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+                            class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
                             v-model="form.agree"
+                        />
+                        <label
+                            for="terms"
+                            class="ml-2 block text-sm text-gray-700"
                         >
-                        <label for="terms" class="ml-2 block text-sm text-gray-700">
                             Remember me
                         </label>
                     </div>
 
-                        <button
-                            class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded shadow transition duration-200 mt-2"
-                        >
-                            Register
-                        </button>
+                    <button
+                        class="mt-2 w-full rounded bg-slate-800 px-4 py-3 font-bold text-white shadow transition duration-200 hover:bg-slate-700"
+                    >
+                        Register
+                    </button>
 
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Already have an account?
-                        <Link href="/login" class="font-bold text-orange-500 hover:text-orange-600 transition">
+                        <Link
+                            href="/login"
+                            class="font-bold text-orange-500 transition hover:text-orange-600"
+                        >
                             Login here
                         </Link>
                     </div>
