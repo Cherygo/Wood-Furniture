@@ -14,7 +14,6 @@ const scrollRight = () => {
 <template>
     <Head title="Home" />
 
-    <WoodFurnitureLayout>
         <div class="banner">
             <div class="container">
                 <div class="banner-items">
@@ -58,5 +57,4 @@ const scrollRight = () => {
             </div>
         </div>
         </div>
-    </WoodFurnitureLayout>
 </template>

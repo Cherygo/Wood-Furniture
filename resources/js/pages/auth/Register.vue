@@ -1,108 +1,109 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
-import InputError from '@/components/InputError.vue';
-import TextLink from '@/components/TextLink.vue';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
-import AuthBase from '@/layouts/AuthLayout.vue';
-import { login } from '@/routes';
-import { store } from '@/routes/register';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import MainLayout from '@/layouts/MainLayout.vue';
+
+const form = useForm({
+    login: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    agree: false,
+});
+const submit = () => {
+    form.post('/register', {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
+};
 </script>
 
 <template>
-    <AuthBase
-        title="Create an account"
-        description="Enter your details below to create your account"
-    >
-        <Head title="Register" />
+    <Head title="Register" />
 
-        <Form
-            v-bind="store.form()"
-            :reset-on-success="['password', 'password_confirmation']"
-            v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
-        >
-            <div class="grid gap-6">
-                <div class="grid gap-2">
-                    <Label for="name">Name</Label>
-                    <Input
-                        id="name"
-                        type="text"
-                        required
-                        autofocus
-                        :tabindex="1"
-                        autocomplete="name"
-                        name="name"
-                        placeholder="Full name"
-                    />
-                    <InputError :message="errors.name" />
-                </div>
+    <MainLayout>
+        <div class="flex items-center justify-center min-h-[80vh] py-12 bg-white">
 
-                <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        required
-                        :tabindex="2"
-                        autocomplete="email"
-                        name="email"
-                        placeholder="email@example.com"
-                    />
-                    <InputError :message="errors.email" />
-                </div>
+            <div class="w-full max-w-lg px-6">
 
-                <div class="grid gap-2">
-                    <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="3"
-                        autocomplete="new-password"
-                        name="password"
-                        placeholder="Password"
-                    />
-                    <InputError :message="errors.password" />
-                </div>
+                <form @submit.prevent="submit">
+                    <h1 class="text-3xl font-extrabold text-slate-800 text-center mb-8 tracking-tight">
+                        Create Account
+                    </h1>
 
-                <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirm password</Label>
-                    <Input
-                        id="password_confirmation"
-                        type="password"
-                        required
-                        :tabindex="4"
-                        autocomplete="new-password"
-                        name="password_confirmation"
-                        placeholder="Confirm password"
-                    />
-                    <InputError :message="errors.password_confirmation" />
-                </div>
+                    <div class="space-y-4">
 
-                <Button
-                    type="submit"
-                    class="mt-2 w-full"
-                    tabindex="5"
-                    :disabled="processing"
-                    data-test="register-user-button"
-                >
-                    <Spinner v-if="processing" />
-                    Create account
-                </Button>
+                        <div>
+                            <input
+                                type="text"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Login*"
+                                v-model="form.login"
+                            >
+                        </div>
+                        <div v-if="form.errors.login" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.login }}
+                        </div>
+
+                        <div>
+                            <input
+                                type="email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Email Address*"
+                                v-model="form.email"
+                            >
+                        </div>
+                        <div v-if="form.errors.email" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.email }}
+                        </div>
+
+                        <div>
+                            <input
+                                type="password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Password*"
+                                v-model="form.password"
+                            >
+                        </div>
+                        <div v-if="form.errors.password" class="text-red-500 text-sm mt-1">
+                            {{ form.errors.password }}
+                        </div>
+
+                        <div>
+                            <input
+                                type="password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                                placeholder="Confirm Password*"
+                                v-model="form.password_confirmation"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center mt-2">
+                        <input
+                            id="terms"
+                            type="checkbox"
+                            class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+                            v-model="form.agree"
+                        >
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            Remember me
+                        </label>
+                    </div>
+
+                        <button
+                            class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded shadow transition duration-200 mt-2"
+                        >
+                            Register
+                        </button>
+
+                    <div class="mt-6 text-center text-sm text-gray-600">
+                        Already have an account?
+                        <Link href="/login" class="font-bold text-orange-500 hover:text-orange-600 transition">
+                            Login here
+                        </Link>
+                    </div>
+                </form>
             </div>
-
-            <div class="text-center text-sm text-muted-foreground">
-                Already have an account?
-                <TextLink
-                    :href="login()"
-                    class="underline underline-offset-4"
-                    :tabindex="6"
-                    >Log in</TextLink
-                >
-            </div>
-        </Form>
-    </AuthBase>
+        </div>
+    </MainLayout>
 </template>
