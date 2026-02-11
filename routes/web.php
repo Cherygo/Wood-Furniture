@@ -22,7 +22,7 @@ Route::get('/', function () {
     return Inertia::render('index', [
         'furniture' =>Furniture::take(7)
     ]);
-});
+})->name('index');
 
 // AUTH
 Route::get('/register', function () {
