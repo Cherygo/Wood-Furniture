@@ -7,6 +7,7 @@
                 :src="product.image"
                 :alt="product.name"
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                style="object-fit: fill"
             />
         </div>
 
