@@ -19,10 +19,4 @@ class Furniture extends Model
         'price',
         'image',
     ];
-
-    public static function take(int $numOfFurniture) : object
-    {
-        $furniture = DB::table('furniture')->limit($numOfFurniture)->get();
-        return $furniture;
-    }
 }
