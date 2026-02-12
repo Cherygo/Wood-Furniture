@@ -22,27 +22,34 @@ Route::get('dashboard', function () {
 
 Route::get('/', function () {
     return Inertia::render('index', array(
-        'furniture' => FurnitureController::takeXLatestItems(7),
+        'furniture' => FurnitureController::getXLatestItems(7),
     ));
 })->name('index');
 
 // AUTH
-Route::get('/register', function () {
-    return Inertia::render('WoodFurniture/Register', []);
-})->middleware('guest')
-    ->name('register');
-Route::post('/register', RegisterController::class)
-    ->middleware('guest');
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('/register', function () {
+        return Inertia::render('auth/Register', []);
+    })->middleware('guest')
+        ->name('register');
+    Route::post('/register', RegisterController::class)
+        ->middleware('guest');
 
-Route::get('/login', function () {
- return Inertia::render('WoodFurniture/Login', []);
-})->middleware('guest')
-    ->name('login');
-Route::post('/login', LoginController::class)
-    ->middleware('guest');
+    Route::get('/login', function () {
+        return Inertia::render('auth/Login', []);
+    })->middleware('guest')
+        ->name('login');
+    Route::post('/login', LoginController::class)
+        ->middleware('guest');
 
-Route::post('/logout', LogoutController::class)
-    ->middleware('auth')
-    ->name('logout');
+    Route::post('/logout', LogoutController::class)
+        ->middleware('auth')
+        ->name('logout');
+});
+
+// CATALOG
+Route::group(['prefix' => 'catalog'], function () {
+   Route::get('/', [FurnitureController::class, 'index'])->name('catalog.index');
+});
 
 require __DIR__.'/settings.php';
