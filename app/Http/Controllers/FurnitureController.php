@@ -41,7 +41,7 @@ class FurnitureController extends Controller
         ]);
     }
 
-    public static function takeXLatestItems(int $amount) : object
+    public static function getXLatestItems(int $amount) : object
     {
             $furniture = DB::table('furniture')
                 ->latest('id')
