@@ -163,7 +163,7 @@ const showMobileMenu = ref(false);
                         >Sofas</Link
                     >
                 </div>
-            </div>na
+            </div>
         </div>
     </header>
 </template>
