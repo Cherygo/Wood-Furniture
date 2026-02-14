@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import ProductCard from '@/components/ProductCard.vue';
+import ProductCard from '@/pages/cat/products/ProductCard.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 
 const props = defineProps({

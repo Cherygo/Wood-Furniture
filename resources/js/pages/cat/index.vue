@@ -3,7 +3,7 @@ import { reactive, ref, watch } from 'vue';
 import { debounce } from 'lodash';
 import { router, Link } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
-import ProductCard from '@/components/ProductCard.vue';
+import ProductCard from '@/pages/cat/products/ProductCard.vue';
 
 const props = defineProps({
     furniture: Object,
