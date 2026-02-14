@@ -32,6 +32,7 @@ class FurnitureController extends Controller
         $categories = DB::table('furniture')
             ->select('category')
             ->distinct()
+            ->orderBy('category')
             ->pluck('category');
 
         return Inertia::render('cat/index', [
