@@ -133,34 +133,34 @@ const showMobileMenu = ref(false);
                         >All Products</Link
                     >
                     <Link
+                        href="/catalog?category=Armchair&max_price=&min_price=&sort_price="
+                        class="transition hover:text-white"
+                    >Armchairs</Link
+                    >
+                    <Link
+                        href="/catalog?category=Bed&max_price=&min_price=&sort_price="
+                        class="transition hover:text-white"
+                    >Beds</Link
+                    >
+                    <Link
+                        href="/catalog?category=Chair&max_price=&min_price=&sort_price="
+                        class="transition hover:text-white"
+                    >Chairs</Link
+                    >
+                    <Link
                         href="/catalog?category=Table&max_price=&min_price=&sort_price="
                         class="transition hover:text-white"
                         >Tables</Link
                     >
                     <Link
-                        href="/catalog?category=Chair&max_price=&min_price=&sort_price="
+                        href="/catalog?category=Sofa&max_price=&min_price=&sort_price="
                         class="transition hover:text-white"
-                        >Chairs</Link
+                        >Sofas</Link
                     >
                     <Link
                         href="/catalog?category=Wardrobe&max_price=&min_price=&sort_price="
                         class="transition hover:text-white"
                         >Wardrobes</Link
-                    >
-                    <Link
-                        href="/catalog?category=Armchair&max_price=&min_price=&sort_price="
-                        class="transition hover:text-white"
-                        >Armchairs</Link
-                    >
-                    <Link
-                        href="/catalog?category=Bed&max_price=&min_price=&sort_price="
-                        class="transition hover:text-white"
-                        >Beds</Link
-                    >
-                    <Link
-                        href="/catalog?category=Sofa&max_price=&min_price=&sort_price="
-                        class="transition hover:text-white"
-                        >Sofas</Link
                     >
                 </div>
             </div>
