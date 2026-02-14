@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import ProductCard from '@/components/ProductCard.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 
-defineProps({
+const props = defineProps({
     furniture: Object,
 });
 
