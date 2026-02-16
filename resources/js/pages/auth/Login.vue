@@ -8,7 +8,11 @@ const form = useForm({
     agree: false,
 });
 const submit = () => {
-    form.post('/login');
+    form.post('/login', {
+        onError: () => {
+            form.reset('password')
+        }
+    });
 };
 </script>
 
@@ -33,7 +37,7 @@ const submit = () => {
                             <input
                                 type="text"
                                 class="w-full rounded border border-gray-300 px-4 py-3 text-gray-700 transition focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="Email Address"
+                                placeholder="Email"
                                 v-model="form.email"
                             />
                         </div>
