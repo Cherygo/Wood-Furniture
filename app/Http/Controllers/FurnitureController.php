@@ -50,4 +50,17 @@ class FurnitureController extends Controller
                 ->get();
             return $furniture;
     }
+
+    public function show($id)
+    {
+        $product = DB::table('furniture')->where('id', $id)->first();
+
+        if(!$product) {
+            abort(404);
+        }
+
+        return Inertia::render('cat/products/ProductPage', [
+            'product' => $product
+        ]);
+    }
 }
