@@ -8,7 +8,7 @@ const form = useForm({
     agree: false,
 });
 const submit = () => {
-    form.post('/login', {
+    form.post('/auth/login', {
         onError: () => {
             form.reset('password')
         }

@@ -10,7 +10,7 @@ const form = useForm({
     agree: false,
 });
 const submit = () => {
-    form.post('/register', {
+    form.post('/auth/register', {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
