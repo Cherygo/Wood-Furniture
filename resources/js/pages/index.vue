@@ -38,7 +38,7 @@ const scrollRight = () => {
                     Furniture for every home!
                 </h2>
                 <Link
-                    href="/"
+                    href="/catalog"
                     class="inline-block transform rounded bg-orange-500 px-8 py-3 font-bold text-white transition hover:scale-105 hover:bg-orange-600"
                 >
                     To Catalog
