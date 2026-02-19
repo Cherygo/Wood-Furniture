@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\FurnitureController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,5 +40,11 @@ Route::group(['prefix' => 'auth'], function () {
 
 // PRODUCT PAGE
 Route::get('/product/{id}', [FurnitureController::class, 'show'])->name('product.show');
+
+// CART
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+
 
 require __DIR__.'/settings.php';
