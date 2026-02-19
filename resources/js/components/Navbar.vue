@@ -43,10 +43,26 @@ const showMobileMenu = ref(false);
                     <div v-if="user" class="flex items-center gap-4">
                         <div class="text-right">
                             <span
-                                class="block text-sm font-bold text-slate-800"
+                                class="flex items-center gap-4 text-sm font-bold text-slate-800"
                             >
-                                {{ user.email }}
+                               Hi, {{ user.email }}
+                                <Link
+                                    class="cursor-pointer text-blue-600 font-medium bg-yellow-100 rounded-full px-4 py-2 transition hover:bg-yellow-400"
+                                    as="button"
+                                    href="/cart"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" fill="none" stroke="#0A2342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="10" cy="20.5" r="1.5" fill="none" stroke="#0A2342" stroke-width="2"/>
+                                        <circle cx="18" cy="20.5" r="1.5" fill="none" stroke="#0A2342" stroke-width="2"/>
+                                        <path d="M6 10h15" fill="none" stroke="#FFC107" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M6 14h13" fill="none" stroke="#FFC107" stroke-width="2" stroke-linecap="round"/>
+                                        <circle cx="10" cy="20.5" r="0.5" fill="#FFC107"/>
+                                        <circle cx="18" cy="20.5" r="0.5" fill="#FFC107"/>
+                                    </svg>
+                                </Link>
                             </span>
+
                         </div>
 
                         <Link
