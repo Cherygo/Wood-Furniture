@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css';
 
 const form = useForm({
     login: '',
@@ -11,7 +13,18 @@ const form = useForm({
 });
 const submit = () => {
     form.post('/auth/register', {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+        onSuccess: () => {
+            toast.success('Registration successful! Welcome to Wood Furniture.', {
+                position: "bottom-right",
+                timeout: 1000,
+            })
+        },
+        onError: () => {
+            toast.error('Registration failed!', {
+                position: "bottom-right",
+                timeout: 1000,
+            })
+        },
     });
 };
 </script>

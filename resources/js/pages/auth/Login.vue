@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css';
 
 const form = useForm({
     email: '',
@@ -9,9 +11,13 @@ const form = useForm({
 });
 const submit = () => {
     form.post('/auth/login', {
+        onSuccess: () => toast.success('Login successful', {
+            position: "bottom-right",
+            timeout: 1000,
+        }),
         onError: () => {
             form.reset('password')
-        }
+        },
     });
 };
 </script>
