@@ -68,7 +68,7 @@ const props = defineProps({
                             <div class="mt-8 pt-8 border-t border-gray-100">
                                     <div>
                                         <dt class="text-gray-500">Availability</dt>
-                                        <dd class="font-medium text-green-600">In Stock</dd>
+                                        <dd class="font-medium text-green-600">Always In Stock</dd>
                                     </div>
                             </div>
 
