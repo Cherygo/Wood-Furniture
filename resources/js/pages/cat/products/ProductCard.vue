@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css';
 interface Furniture {
     id: number;
     name: string;
@@ -8,9 +10,29 @@ interface Furniture {
     image: string;
 }
 
-defineProps<{
+const props = defineProps<{
     product: Furniture;
 }>();
+
+const addToCart = () => {
+    router.post('/cart', {
+        furniture_id: props.product.id,
+    }, {
+        preserveScroll: true,
+        onSuccess: () => toast.success(`${props.product.name} added to cart`, {
+            theme: 'colored',
+            position: 'bottom-right',
+            icon: '🛒',
+        }),
+        onError: (errors) => {
+            toast.error('The product could not be added to the cart. Maybe you have already added it?', {
+                theme: 'colored',
+                position: 'bottom-right',
+            })
+            console.log('server error', errors)
+        }
+    })
+}
 </script>
 
 <template>
