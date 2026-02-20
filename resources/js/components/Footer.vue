@@ -17,10 +17,10 @@ import { Link } from '@inertiajs/vue3';
                     <Link href="/catalog" class="transition hover:text-white"
                         >Catalog</Link
                     >
-                    <Link href="/" class="transition hover:text-white"
+                    <Link href="/about-us" class="transition hover:text-white"
                         >About Us</Link
                     >
-                    <Link href="/" class="transition hover:text-white"
+                    <Link href="/location" class="transition hover:text-white"
                         >Where to find us</Link
                     >
                 </nav>
