@@ -42,8 +42,12 @@ Route::group(['prefix' => 'auth'], function () {
 Route::get('/product/{id}', [FurnitureController::class, 'show'])->name('product.show');
 
 // CART
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])
+    ->middleware('auth')
+    ->name('cart.index');
+Route::post('/cart', [CartController::class, 'add'])
+    ->middleware('auth')
+    ->name('cart.add');
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 // COMPANY
