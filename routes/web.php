@@ -46,5 +46,13 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 
+// COMPANY
+Route::get('/about-us', function () {
+   return Inertia::render('company/About', []);
+});
+Route::get('/location', function () {
+   return Inertia::render('company/Location', []);
+});
+
 
 require __DIR__.'/settings.php';
