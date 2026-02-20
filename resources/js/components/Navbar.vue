@@ -5,6 +5,8 @@ import { computed, ref } from 'vue';
 const page = usePage();
 const user = computed(() => page.props.auth.user);
 const showMobileMenu = ref(false);
+
+const cartCount = computed(() => page.props.cartCount);
 </script>
 
 <template>
@@ -45,9 +47,8 @@ const showMobileMenu = ref(false);
                             <span
                                 class="flex items-center gap-4 text-sm font-bold text-slate-800"
                             >
-                               Hi, {{ user.email }}
                                 <Link
-                                    class="cursor-pointer text-blue-600 font-medium bg-yellow-100 rounded-full px-4 py-2 transition hover:bg-yellow-400"
+                                    class="relative cursor-pointer text-blue-600 font-medium bg-yellow-100 rounded-full px-4 py-2 transition hover:bg-yellow-400"
                                     as="button"
                                     href="/cart"
                                 >
@@ -60,6 +61,12 @@ const showMobileMenu = ref(false);
                                         <circle cx="10" cy="20.5" r="0.5" fill="#FFC107"/>
                                         <circle cx="18" cy="20.5" r="0.5" fill="#FFC107"/>
                                     </svg>
+                                    <span
+                                        v-if="cartCount > 0"
+                                        class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow"
+                                    >
+                                        {{ cartCount }}
+                                    </span>
                                 </Link>
                             </span>
 
