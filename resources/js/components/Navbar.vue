@@ -35,7 +35,7 @@ const cartCount = computed(() => page.props.cartCount);
                         >Catalog</Link
                     >
                     <Link
-                        href="/we-are-here"
+                        href="/location"
                         class="transition hover:text-orange-500"
                         >Where to find us?</Link
                     >
