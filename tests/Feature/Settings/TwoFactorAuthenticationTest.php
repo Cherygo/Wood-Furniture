@@ -12,8 +12,8 @@ class TwoFactorAuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
-//    public function test_two_factor_settings_page_can_be_rendered()
-//    {
+    public function test_two_factor_settings_page_can_be_rendered()
+    {
 //        if (! Features::canManageTwoFactorAuthentication()) {
 //            $this->markTestSkipped('Two-factor authentication is not enabled.');
 //        }
@@ -32,10 +32,10 @@ class TwoFactorAuthenticationTest extends TestCase
 //                ->component('settings/TwoFactor')
 //                ->where('twoFactorEnabled', false)
 //            );
-//    }
-//
-//    public function test_two_factor_settings_page_requires_password_confirmation_when_enabled()
-//    {
+    }
+
+    public function test_two_factor_settings_page_requires_password_confirmation_when_enabled()
+    {
 //        if (! Features::canManageTwoFactorAuthentication()) {
 //            $this->markTestSkipped('Two-factor authentication is not enabled.');
 //        }
@@ -51,10 +51,10 @@ class TwoFactorAuthenticationTest extends TestCase
 //            ->get(route('two-factor.show'));
 //
 //        $response->assertRedirect(route('password.confirm'));
-//    }
-//
-//    public function test_two_factor_settings_page_does_not_requires_password_confirmation_when_disabled()
-//    {
+    }
+
+    public function test_two_factor_settings_page_does_not_requires_password_confirmation_when_disabled()
+    {
 //        if (! Features::canManageTwoFactorAuthentication()) {
 //            $this->markTestSkipped('Two-factor authentication is not enabled.');
 //        }
@@ -72,10 +72,10 @@ class TwoFactorAuthenticationTest extends TestCase
 //            ->assertInertia(fn (Assert $page) => $page
 //                ->component('settings/TwoFactor')
 //            );
-//    }
-//
-//    public function test_two_factor_settings_page_returns_forbidden_response_when_two_factor_is_disabled()
-//    {
+    }
+
+    public function test_two_factor_settings_page_returns_forbidden_response_when_two_factor_is_disabled()
+    {
 //        if (! Features::canManageTwoFactorAuthentication()) {
 //            $this->markTestSkipped('Two-factor authentication is not enabled.');
 //        }
@@ -88,5 +88,5 @@ class TwoFactorAuthenticationTest extends TestCase
 //            ->withSession(['auth.password_confirmed_at' => time()])
 //            ->get(route('two-factor.show'))
 //            ->assertForbidden();
-//    }
+    }
 }
