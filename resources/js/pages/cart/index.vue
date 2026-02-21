@@ -2,7 +2,7 @@
 import { Link, router } from '@inertiajs/vue3';
 import MainLayout from '@/layouts/MainLayout.vue';
 
-const props = defineProps({
+defineProps({
     cartItems: Array,
     subtotal: Number,
 });
