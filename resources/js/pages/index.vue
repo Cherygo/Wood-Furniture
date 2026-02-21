@@ -69,7 +69,7 @@ const scrollRight = () => {
                 />
 
                 <Link
-                    href="/"
+                    href="/catalog"
                     class="group flex w-72 shrink-0 cursor-pointer snap-start flex-col items-center justify-center rounded-lg bg-slate-800 text-white transition hover:bg-slate-700"
                 >
                     <span class="mb-2 text-xl font-bold"
