@@ -28,6 +28,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --no-dev  --optimize-autoloader
 
+ENV NODE_OPTIONS="--max-old-space-size=400"
 RUN npm install \
     && npm run build
 
