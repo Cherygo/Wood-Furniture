@@ -25,11 +25,8 @@ COPY . .
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV COMPOSER_MEMORY_LIMIT=-1
 RUN composer install --no-dev  --optimize-autoloader
 
-ENV NODE_OPTIONS="--max-old-space-size=400"
 RUN npm install \
     && npm run build
 
@@ -41,7 +38,6 @@ RUN chown -R www-data:www-data \
     && chmod -R 775 /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/public
 
-# Copy the entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
@@ -49,5 +45,4 @@ EXPOSE 80 5173
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-# Keep the original apache default CMD
 CMD ["apache2-foreground"]
