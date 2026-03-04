@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_vue_app
+    container_name: wood-furniture
     ports:
       - "8000:80"
       - "5173:5173"
