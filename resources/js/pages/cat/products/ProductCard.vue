@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Link, router } from '@inertiajs/vue3';
-import { toast } from 'vue3-toastify'
+import { Link } from '@inertiajs/vue3';
 import 'vue3-toastify/dist/index.css';
+import { addToCart } from '@/composables/useCart';
 interface Furniture {
     id: number;
     name: string;
@@ -10,29 +10,10 @@ interface Furniture {
     image: string;
 }
 
-const props = defineProps<{
+defineProps<{
     product: Furniture;
 }>();
 
-const addToCart = () => {
-    router.post('/cart', {
-        furniture_id: props.product.id,
-    }, {
-        preserveScroll: true,
-        onSuccess: () => toast.success(`${props.product.name} added to cart`, {
-            theme: 'colored',
-            position: 'bottom-right',
-            icon: '🛒',
-        }),
-        onError: (errors) => {
-            toast.error('The product could not be added to the cart. Maybe you have already added it?', {
-                theme: 'colored',
-                position: 'bottom-right',
-            })
-            console.log('server error', errors)
-        }
-    })
-}
 </script>
 
 <template>
@@ -58,8 +39,8 @@ const addToCart = () => {
                     {{ product.price }}€
                 <span>
                     <button
-                        @click.prevent="addToCart"
-                        class="text-blue-600 font-medium bg-yellow-100 rounded-full px-4 py-2 transition hover:bg-yellow-400">
+                        @click.prevent="addToCart(product)"
+                        class="text-blue-600 font-medium bg-yellow-100 rounded-full px-4 py-2 transition hover:bg-yellow-400 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" fill="none" stroke="#0A2342" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <circle cx="10" cy="20.5" r="1.5" fill="none" stroke="#0A2342" stroke-width="2"/>
