@@ -3,13 +3,16 @@
 This application is built with a modern, full-stack architecture. It uses **Vue.js** for the front-end, **Laravel** for the back-end, **Inertia.js** for seamless routing, a **PostgreSQL** database, and **Filament** for the admin panel.
 
 > **Note:** The pictures show how the website will look after you run migrations and seed databases. Refer to Local Setup section for instructions.
-#### Main page
+Main page
 <img width="2028" height="1109" alt="image" src="https://github.com/user-attachments/assets/8ebaf6e1-399f-4373-b770-56a3430b2c1f" />
-#### Catalog
+
+Catalog
 <img width="2030" height="1112" alt="image" src="https://github.com/user-attachments/assets/a5b1d511-1fc1-44ff-9cb7-b7c1c56f653d" />
-#### Registration
+
+Registration
 <img width="2032" height="1118" alt="image" src="https://github.com/user-attachments/assets/f469ecf4-662b-4850-9dfd-9a0bd09aa7b3" />
-#### Admin panel
+
+Admin panel
 <img width="2047" height="1113" alt="image" src="https://github.com/user-attachments/assets/0eb6b656-11b6-4d09-842b-e47a19c27ed4" />
 
 ---
