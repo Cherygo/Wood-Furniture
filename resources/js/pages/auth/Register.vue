@@ -37,7 +37,9 @@ const submit = () => {
             class="flex min-h-[80vh] items-center justify-center bg-white py-12"
         >
             <div class="w-full max-w-lg px-6">
-                <form @submit.prevent="submit">
+                <form @submit.prevent="submit"
+                      class="rounded-lg bg-gray-100 p-8 shadow-xl"
+                >
                     <h1
                         class="mb-8 text-center text-3xl font-extrabold tracking-tight text-slate-800"
                     >
@@ -98,8 +100,14 @@ const submit = () => {
                                 v-model="form.password_confirmation"
                             />
                         </div>
-                    </div>
 
+                        <button
+                            class="w-full rounded bg-slate-800 px-4 py-3 font-bold text-white shadow transition duration-200 hover:bg-slate-700"
+                        >
+                            Register
+                        </button>
+                    </div>
+                    
                     <div class="mt-2 flex items-center">
                         <input
                             id="terms"
@@ -115,11 +123,6 @@ const submit = () => {
                         </label>
                     </div>
 
-                    <button
-                        class="mt-2 w-full rounded bg-slate-800 px-4 py-3 font-bold text-white shadow transition duration-200 hover:bg-slate-700"
-                    >
-                        Register
-                    </button>
 
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Already have an account?
