@@ -49,37 +49,40 @@ const scrollRight = () => {
         <section class="container mx-auto px-4 py-16">
             <div class="mb-8 flex items-center justify-between">
                 <h3 class="text-3xl font-bold text-slate-800">Popular Items</h3>
+            </div>
+
+            <div class="relative">
+
+                <div
+                    ref="scrollContainer"
+                    class="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6"
+                    style="scrollbar-width: none; -ms-overflow-style: none"
+                >
+                    <div class="flex items-stretch gap-6">
+                        <ProductCard
+                            v-for="item in furniture"
+                            :key="item.id"
+                            :product="item"
+                        />
+
+                        <Link
+                            v-if="furniture && furniture.length > 0"
+                            href="/catalog"
+                            class="p-4 font-bold text-2xl group flex w-72 shrink-0 cursor-pointer snap-start flex-col items-center justify-center rounded-lg bg-slate-800 text-white transition hover:bg-slate-700"
+                        >
+                            See all in Catalog
+                        </Link>
+                    </div>
+                </div>
+
                 <button
+                    v-if="furniture && furniture.length > 0"
                     @click="scrollRight"
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-white transition hover:bg-slate-700"
+                    class="absolute -right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-slate-800 text-2xl text-white shadow-lg transition hover:bg-slate-700"
                 >
                     →
                 </button>
-            </div>
 
-            <div
-                ref="scrollContainer"
-                class="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6"
-                style="scrollbar-width: none; -ms-overflow-style: none"
-            >
-                <ProductCard
-                    v-for="item in furniture"
-                    :key="item.id"
-                    :product="item"
-                />
-
-                <Link
-                    href="/catalog"
-                    class="group flex w-72 shrink-0 cursor-pointer snap-start flex-col items-center justify-center rounded-lg bg-slate-800 text-white transition hover:bg-slate-700"
-                >
-                    <span class="mb-2 text-xl font-bold"
-                        >See all in Catalog</span
-                    >
-                    <span
-                        class="text-3xl transition-transform group-hover:translate-x-2"
-                        >→</span
-                    >
-                </Link>
             </div>
         </section>
     </MainLayout>
