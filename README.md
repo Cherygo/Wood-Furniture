@@ -68,6 +68,7 @@ Once everything is installed and running, you can view the application in your b
 Main Website: http://localhost:8000
 
 Filament Admin Panel: http://localhost:8000/admin
+> **Note:** To access the admin panel do the following: Create an account -> Go to the admin panel url -> Login using your newly created account credentials
 
 ## Useful Docker Commands
 Here are a few handy commands for managing your local environment:
